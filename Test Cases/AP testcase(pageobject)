@@ -1,0 +1,41 @@
+package objectrepository;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+
+public class APLogin {
+	
+	WebDriver driver;
+	
+	public  APLogin(WebDriver driver)
+	{
+		this.driver=driver;
+	}
+	
+       {
+		// TODO Auto-generated constructor stub
+	}
+
+	By signin=By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a");
+	By email=By.xpath("//*[@id=\"email\"]");
+	By password=By.xpath("//*[@id=\"passwd\"]");
+	By go=By.xpath("//*[@id=\"SubmitLogin\"]");
+	
+	public WebElement signin()
+			{
+		return driver.findElement(signin);
+			}
+	public WebElement email()
+	{
+   return driver.findElement(email);
+	}
+	public WebElement password()
+	{
+   return driver.findElement(password);
+	}
+	public WebElement go()
+	{
+   return driver.findElement(go);
+	}
+}
