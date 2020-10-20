@@ -9,7 +9,7 @@ public class StepDefinitions {
 	public void User_is_on_automationpratice_login_page()
 	{
 		//code to be execute
-		driver.get("http://automationpractice.com");
+		
 	}
 	
 
@@ -17,16 +17,14 @@ public class StepDefinitions {
 	public void User_is_clicking_on_login_page()
 	{
   //code to be execute
-		driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).click();
+		
 	}
 	
 	@Then ("^User is puting valid email and password$");
 	public void User_is_puting_valid_email_and_password()
 	{
   //code to be execute
-		driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("milevskinikola@gmail.com");
-		driver.findElement(By.xpath("//*[@id=\"passwd\"]")).sendKeys("nikolabaska");
-		driver.findElement(By.id("SubmitLogin")).click();
+		
 	}
 	
 	@And("^User should be loged in$");
