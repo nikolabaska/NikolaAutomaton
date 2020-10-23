@@ -19,6 +19,7 @@ public class LoginPage {
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\baska\\Desktop\\chromedriver.exe\\");
 		
 	driver = new ChromeDriver();
+	driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	//Login 
 	driver.get("http://automationpractice.com");
 	driver.manage().window().maximize();
@@ -30,7 +31,6 @@ public class LoginPage {
 	//Actions and dropdown menu selection
 	Actions a=new Actions(driver);
 	a.moveToElement(driver.findElement(By.xpath("//a[text()='Women']"))).build().perform();
-	driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	driver.findElement(By.xpath("(//a[text()='T-shirts'])[1]")).click();
 	
 	
@@ -72,3 +72,4 @@ public class LoginPage {
 	}
 
 }
+
