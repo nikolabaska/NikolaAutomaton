@@ -1,0 +1,74 @@
+package AutomationPratice;
+
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
+
+public class LoginPage {
+
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+
+		WebDriver driver;
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\baska\\Desktop\\chromedriver.exe\\");
+		
+	driver = new ChromeDriver();
+	//Login 
+	driver.get("http://automationpractice.com");
+	driver.manage().window().maximize();
+	driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).click();
+	driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("milevskinikola@gmail.com");
+	driver.findElement(By.xpath("//*[@id=\"passwd\"]")).sendKeys("nikolabaska");
+	driver.findElement(By.id("SubmitLogin")).click();
+	
+	//Actions and dropdown menu selection
+	Actions a=new Actions(driver);
+	a.moveToElement(driver.findElement(By.xpath("//a[text()='Women']"))).build().perform();
+	driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
+	driver.findElement(By.xpath("(//a[text()='T-shirts'])[1]")).click();
+	
+	
+	driver.findElement(By.id("selectProductSort")).click();
+	 Select s=new Select(driver.findElement(By.id("selectProductSort")));
+	s.selectByVisibleText("Price: Highest first");
+	Thread.sleep(300);
+	   
+	//Checkbox and assertion
+	   driver.findElement(By.id("layered_id_attribute_group_3")).click();
+	   Assert.assertTrue(driver.findElement(By.id("layered_id_attribute_group_3")).isSelected());
+	   Assert.assertTrue(true);
+	   driver.findElement(By.id("layered_id_attribute_group_13"));
+	   Assert.assertFalse(driver.findElement(By.id("layered_id_attribute_group_13")).isSelected());
+	   Assert.assertFalse(false);
+	   Assert.assertEquals(driver.findElement(By.xpath("//*[@id=\"ul_layered_id_attribute_group_3\"]/li[1]/label/a")).getText(),  "Orange (1)");
+	
+	   //While loop
+	   Actions a1=new Actions(driver);
+		a1.moveToElement(driver.findElement(By.xpath("//*[@id=\"center_column\"]/ul/li/div"))).build().perform();
+		driver.findElement(By.xpath("//span[text()='Add to cart']")).click();
+		driver.findElement(By.xpath("//*[@id=\"layer_cart\"]/div[1]/div[2]/div[4]/a")).click();
+		driver.findElement(By.xpath("//*[@id=\"cart_quantity_up_1_1_0_0\"]")).click();
+	   Thread.sleep(300);
+	   int i=1;
+	   while (i<5)
+	   {
+		   driver.findElement(By.xpath("//*[@id=\"cart_quantity_up_1_1_0_0\"]")).click();
+		   i++;
+	   }
+	   
+	   //Keyboard
+	   Thread.sleep(300);
+	   driver.findElement(By.id("search_query_top")).sendKeys("summer dresses");
+	   driver.findElement(By.id("search_query_top")).sendKeys(Keys.ENTER);
+	   driver.findElement(By.xpath(("(//a[text()='Dresses'])[2]"))).sendKeys(Keys.CONTROL + "a");
+	   Actions a2=new Actions(driver);
+	   a2.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	}
+
+}
