@@ -7,7 +7,9 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 public class LoginPage {
@@ -69,7 +71,14 @@ public class LoginPage {
 	   driver.findElement(By.xpath(("(//a[text()='Dresses'])[2]"))).sendKeys(Keys.CONTROL + "a");
 	   Actions a2=new Actions(driver);
 	   a2.keyDown(Keys.CONTROL).sendKeys("a").keyUp(Keys.CONTROL).build().perform();
+	   
+	   //Synchronization, waits
+	   //Implicit wait
+	   driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+	   //Explicit wait
+	   WebDriverWait w=new WebDriverWait(driver,5);
+	   w.until(ExpectedConditions.visibilityOfAllElementsLocatedBy((By.xpath("//*[@id=\"cart_quantity_up_1_1_0_0\"]"))));
+	   
 	}
 
 }
-
