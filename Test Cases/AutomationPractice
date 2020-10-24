@@ -18,12 +18,13 @@ public class LoginPage {
 		// TODO Auto-generated method stub
 
 		WebDriver driver;
+		String baseUrl="http://automationpractice.com";
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\baska\\Desktop\\chromedriver.exe\\");
 		
 	driver = new ChromeDriver();
 	driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 	//Login 
-	driver.get("http://automationpractice.com");
+	driver.get(baseUrl);
 	driver.manage().window().maximize();
 	driver.findElement(By.xpath("//*[@id=\"header\"]/div[2]/div/div/nav/div[1]/a")).click();
 	driver.findElement(By.xpath("//*[@id=\"email\"]")).sendKeys("milevskinikola@gmail.com");
